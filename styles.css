@@ -48,13 +48,40 @@ img {
 }
 
 body {
+  max-width: 1024px;
+  margin: 0 auto;
   align-items: center;
   background-color: var(--gris-medio);
   display: flex;
   flex-direction: column;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.skip-link {
+  font-size: 0;
+}
+
+.skip-link:focus,
+.skip-link:active {
+  font-size: 16px;
+  list-style: none;
+  margin-top: 15px;
+  background-color: var(--verde);
+  padding: 7px;
+  border-radius: 5px;
+  color: black;
+  font-family: var(--secondary-font);
+}
+
 .header {
+  text-align: center;
   color: var(--blanco);
   font-family: var(--main-font);
   font-size: 55px;
@@ -68,7 +95,6 @@ body {
 }
 
 .header-img {
-  background: center / contain no-repeat url(./images/juliana.jpeg);
   border-radius: 50%;
   border: 1px solid var(--gris-oscuro);
   box-shadow: 8px 16px 32px 0px var(--shadow);
@@ -77,51 +103,92 @@ body {
   width: 300px;
 }
 
+header nav {
+  width: 100%;
+}
+
 .navigation {
   color: var(--blanco);
   cursor: pointer;
   display: flex;
   justify-content: space-around;
-  margin: 24px 0;
+  margin: 24px auto;
   width: 50%;
 }
 
 .nav-item {
+  text-decoration: none;
+  color: white;
   align-items: center;
   border-radius: 5px;
   display: flex;
   font-family: var(--secondary-font);
   height: 30px;
   justify-content: center;
-  width: 33%;
+  padding: 5px;
 }
 
 .nav-item:hover {
+  color: black;
+  background-color: var(--verde);
+}
+
+.nav-item:focus {
+  outline: none;
+  color: black;
   background-color: var(--verde);
 }
 
 .intro {
-  margin: 0 196px;
+  text-align: center;
   font-family: var(--secondary-font);
+}
+
+.intro p {
+  color: white;
+  margin-top: 30px;
 }
 
 .social-media {
   align-items: center;
   display: flex;
+  gap: 15px;
   justify-content: space-around;
   margin: 32px auto 0;
   width: 20%;
 }
 
+.social-media li {
+  padding: 10px;
+}
+
+.social-media li:focus-within {
+  outline: 2px solid var(--verde);
+}
+
+.social-media a {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.social-media li a p {
+  margin: 3px;
+}
+
 .carousel {
   align-items: center;
   display: flex;
+  gap: 10px;
   margin: 48px 0 64px;
 }
 
 .window {
   overflow: hidden;
-  width: 805px;
+  width: 815px;
+  padding: 8px;
 }
 
 .project-container {
@@ -130,7 +197,22 @@ body {
   width: 1500px;
 }
 
-.project {
+.project-container button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.project-container button:focus-within {
+  outline: 2px solid var(--verde);
+}
+
+.project-container li {
+  display: inline-block;
+}
+
+.project-img {
+  object-fit: cover;
   border-radius: 5px;
   border: 2px solid #000;
   display: inline-block;
@@ -145,27 +227,8 @@ body {
   transform: scale(1.1);
 }
 
-.project1 {
-  background: center / cover no-repeat url(./images/project1.png);
-}
-
-.project2 {
-  background: center / cover no-repeat url(./images/project2.png);
-}
-
-.project3 {
-  background: center / cover no-repeat url(./images/project3.png);
-}
-
-.project4 {
-  background: center / cover no-repeat url(./images/project4.png);
-}
-
-.project5 {
-  background: center / cover no-repeat url(./images/project5.png);
-}
-
 .arrow {
+  cursor: pointer;
   height: 75px;
   transition: all 0.2s ease-in-out;
   width: 75px;
@@ -173,6 +236,10 @@ body {
 
 .arrow:hover {
   transform: scale(1.1);
+}
+
+.arrow:focus-within {
+  outline: 2px solid var(--verde);
 }
 
 .arrow-left {
@@ -187,18 +254,28 @@ body {
   border-radius: 50%;
 }
 
+footer {
+  width: 100%;
+}
+
 .contact-section {
+  width: 100%;
   align-items: center;
   background-color: var(--gris-oscuro);
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 .form-container {
   display: flex;
+  gap: 10px;
   flex-direction: column;
   width: 30%;
+}
+
+form span {
+  font-family: var(--secondary-font);
+  color: white;
 }
 
 .message-input input {
@@ -207,15 +284,20 @@ body {
 }
 
 input {
+  margin-top: 5px;
   outline: none;
   width: 100%;
+}
+
+input:focus {
+  outline: 2px solid var(--verde);
 }
 
 .send-button {
   align-items: center;
   background-color: var(--verde);
   border-radius: 5px;
-  color: white;
+  color: black;
   font-family: var(--secondary-font);
   display: flex;
   height: 50px;
@@ -223,6 +305,7 @@ input {
   margin-bottom: 48px;
   width: 150px;
   margin-left: auto;
+  font-size: 16px;
 }
 
 .notification {
@@ -266,7 +349,6 @@ input {
 }
 
 .modal-project-image {
-  background: center / cover no-repeat url(./images/project1.png);
   border-radius: 5px;
   border: 2px solid #000;
   height: 400px;
