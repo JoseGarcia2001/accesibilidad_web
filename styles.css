@@ -149,6 +149,13 @@ header nav {
   margin-top: 30px;
 }
 
+footer p {
+  color: white;
+  font-family: var(--secondary-font);
+  font-size: 16px;
+  margin: 10px 0 20px;
+}
+
 .social-media {
   align-items: center;
   display: flex;
@@ -284,16 +291,23 @@ form span {
 }
 
 input {
+  font-family: var(--secondary-font);
   margin-top: 5px;
   outline: none;
   width: 100%;
+}
+
+input::placeholder {
+  font-family: var(--secondary-font);
 }
 
 input:focus {
   outline: 2px solid var(--verde);
 }
 
-.send-button {
+.send-button,
+.modal-button {
+  border: none;
   align-items: center;
   background-color: var(--verde);
   border-radius: 5px;
@@ -304,8 +318,8 @@ input:focus {
   justify-content: center;
   margin-bottom: 48px;
   width: 150px;
-  margin-left: auto;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .notification {
@@ -327,6 +341,7 @@ input:focus {
 .modal-container {
   align-items: center;
   background-color: rgba(000, 000, 000, 0.2);
+  display: flex;
   display: none;
   height: 100vh;
   justify-content: center;

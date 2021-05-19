@@ -3,11 +3,13 @@ window.onload = () => {
   document.querySelector(".arrow-left").addEventListener("click", clickLeft);
   document
     .querySelector(".send-button")
-    .addEventListener("click", showNotification);
+    .addEventListener("click", validateForm);
   document.querySelectorAll(".project").forEach((element) => {
     element.addEventListener("click", (e) => openModal(e));
   });
-  document.body.addEventListener("click", (e) => closeModal(e));
+  // document.body.addEventListener("click", (e) => closeModal(e));
+  document.querySelector(".modal-button").addEventListener("click", closeModal);
+  document.body.addEventListener("keyup", listenForScape);
 };
 
 /** Esta funcion se llama cuando la persona hace click en la fecha derecha del carousel para navegar a la derecha */
@@ -99,20 +101,57 @@ function showNotification() {
   }, 3000);
 }
 
+function validateForm(e) {
+  e.preventDefault();
+
+  const nameField = document.querySelector(".name-input");
+  if (nameField.value === "") {
+    document.querySelector(".error-notification").innerHTML =
+      "Antes de enviar el formulario agrega un nombre";
+    return;
+  }
+
+  const emailField = document.querySelector(".email-input");
+  if (emailField.value === "") {
+    emailField.placeholder = "Agrega un correo";
+    return;
+  }
+
+  const messageField = document.querySelector(".message-input");
+  if (messageField.value === "") {
+    messageField.placeholder = "Agrega un mensaje";
+    return;
+  }
+
+  showNotification();
+  document.querySelector("form").reset();
+  document.querySelector(".error-notification").innerHTML = "";
+}
+
 /** Esta funcion se llama cuando la persona hace click en cualquier porjecto del carousel */
 function openModal(e) {
   document.querySelector(".modal-container").style.display = "flex";
+  document.querySelector(".modal h2.header").focus();
 }
 
 /** Esta funcion se llama para cerrar el modal */
 function closeModal(e) {
   // si el click occurio dentro del las imagenes del carousel o dentro del modal, no se cierra el modal
-  if (
-    e.target.className.includes("project") ||
-    e.target.className === "modal"
-  ) {
-    return;
-  } else {
-    document.querySelector(".modal-container").style.display = "none";
-  }
+
+  document.querySelector(".modal-container").style.display = "none";
+
+  // if (
+  //   e.target.className.includes("project") ||
+  //   e.target.className === "modal"
+  // ) {
+  //   return;
+  // } else {
+  //   document.querySelector(".modal-container").style.display = "none";
+  // }
 }
+
+const listenForScape = (e) => {
+  if (e.keyCode === 27) {
+    closeModal();
+  }
+};
